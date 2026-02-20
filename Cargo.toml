@@ -1,0 +1,19 @@
+[package]
+name = "cheet-sheet"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+name = "cheetsheet"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4.5", features = ["derive"] }
+termimad = "0.34"
+dirs = "5"
+
+[dev-dependencies]
+assert_cmd = "2"
+predicates = "3"
+tempfile = "3"
