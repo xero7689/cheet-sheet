@@ -5,9 +5,9 @@ use std::path::{Path, PathBuf};
 use syntect::easy::HighlightLines;
 use syntect::highlighting::ThemeSet;
 use syntect::parsing::SyntaxSet;
-use syntect::util::{as_24_bit_terminal_escaped, LinesWithEndings};
-use termimad::{ansi, gray, MadSkin};
+use syntect::util::{LinesWithEndings, as_24_bit_terminal_escaped};
 use termimad::crossterm::style::{Attribute, Color::Yellow};
+use termimad::{MadSkin, ansi, gray};
 
 #[derive(Debug, Parser)]
 #[command(author, version, about = "Terminal cheatsheet viewer")]
@@ -63,12 +63,12 @@ fn find_sheet(config_dir: &Path, command: &str) -> Result<PathBuf> {
 
 fn make_skin() -> MadSkin {
     let mut skin = MadSkin::default();
-    skin.set_headers_fg(ansi(178));              // 橙黃色標題
+    skin.set_headers_fg(ansi(178)); // 橙黃色標題
     skin.bold.set_fg(Yellow);
-    skin.italic.set_fg(ansi(147));               // 淡紫色
+    skin.italic.set_fg(ansi(147)); // 淡紫色
     skin.inline_code.set_fgbg(ansi(222), ansi(236)); // 暖黃 on 深灰
     skin.code_block.set_fgbg(gray(17), gray(3));
-    skin.table.set_fg(ansi(117));                // 淡藍色表格
+    skin.table.set_fg(ansi(117)); // 淡藍色表格
     skin.headers[0].add_attr(Attribute::Bold);
     skin.headers[1].add_attr(Attribute::Bold);
     skin

@@ -22,10 +22,16 @@ fn test_help() {
 fn test_missing_sheet() {
     let tmp = TempDir::new().unwrap();
     cmd()
-        .args(["nonexistent-cmd-xyz", "--config-dir", tmp.path().to_str().unwrap()])
+        .args([
+            "nonexistent-cmd-xyz",
+            "--config-dir",
+            tmp.path().to_str().unwrap(),
+        ])
         .assert()
         .failure()
-        .stderr(predicate::str::contains("No cheatsheet found for 'nonexistent-cmd-xyz'"));
+        .stderr(predicate::str::contains(
+            "No cheatsheet found for 'nonexistent-cmd-xyz'",
+        ));
 }
 
 #[test]
